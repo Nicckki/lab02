@@ -542,7 +542,181 @@ git branch -d patch1
   </details>
 
   ## Часть 3
+### Пункт 1 Создайте новую локальную ветку patch2.
+```bash
+git checkout -b patch2
+```
+### Пункт 2 Измените code style с помощью утилиты clang-format. Например, используя опцию -style=Mozilla.
+```bash
+clang-format -style=Mozilla -i hello_world.cpp
+```
+Что поменялось в коде:
+```bash
+- int main() {
+-     std::string name;
+-     std::cout << "Enter your name: ";
++ int main()
++ {
++   std::string name;
++   std::cout << "Enter your name: ";
+```
+### Пункт 3 commit, push, создайте pull-request patch2 -> master.
+```bash
+git commit -am "Apply Mozilla code style"
+```
+<details>
+  <summary>Вывод</summary>
+  
+      [patch2 066ec7e] Apply Mozilla code style
+     1 file changed, 12 insertions(+), 12 deletions(-)
+     rewrite hello_world.cpp (89%)
+  </details>
 
+```bash
+git push origin patch2
+```
+<details>
+  <summary>Вывод</summary>
+  
+      Username for 'https://github.com': Nicckki
+    Password for 'https://Nicckki@github.com': 
+    Enumerating objects: 109, done.
+    Counting objects: 100% (109/109), done.
+    Compressing objects: 100% (101/101), done.
+    Writing objects: 100% (109/109), 33.08 KiB | 2.21 MiB/s, done.
+    Total 109 (delta 54), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (54/54), done.
+    remote: 
+    remote: Create a pull request for 'patch2' on GitHub by visiting:
+    remote:      https://github.com/Nicckki/lab02/pull/new/patch2
+    remote: 
+    To https://github.com/Nicckki/lab02.git
+     * [new branch]      patch2 -> patch2
+  </details>
+  Создаем pull-request patch1 -> main на GitHub через терминал.(как во второй части)
+  
+  ```bash
+ hub pull-request -b main -h patch2 -m "Apply Mozilla code style"
+  ```
+В итоге высветилась ссылка на созданный pull request "https://github.com/Nicckki/lab02/pull/2"
+
+### Пункт 4 В ветке master в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
+Теперь нужно изменить файл hello_world.cpp прямо в ветке main на GitHub. Я решил сделать это прямо в GitHub, зашел в нужный репозиторий, открыд файл и поменял комментарии на английский язык, тем самым создав ***конфликт***
+
+### Пункт 5 Убедитесь, что в pull-request появились конфликтны.
+Открыл созданный Pull Request patch2 → main. GitHub показал красное сообщение: "This branch has conflicts that must be resolved" (Скриншоты прикреплять не буду, так как очень неудобно)
+
+### Пункт 6 Для этого локально выполните pull + rebase (точную последовательность команд, следует узнать самостоятельно). Исправьте конфликты.
+Разрешаем конфликт локально, для этого переключаемся на ветку patch2.
+
+```bash
+git checkout patch2
+```
+Стянем изменения из main (появятся конфликты).
+
+```bash
+git pull origin main
+```
+Выводит нам
+
+```bash
+ * branch            main       -> FETCH_HEAD
+Auto-merging hello_world.cpp
+CONFLICT (content): Merge conflict in hello_world.cpp
+```
+Открываем файл:
+
+```bash
+nano hello_world.cpp
+```
+Видим и исправляем:
+
+```bash
+<<<<<<< HEAD
+#include <iostream>
+#include <string>
+
+int main()
+{
+  std::string name;
+  std::cout << "Enter your name: ";
+  std::cin >> name;
+  std::cout << "Hello world from " << name << "!" << std::endl;
+  return 0;
+}
+=======
+#include <iostream>  // для ввода и вывода
+#include <string>    // для работы со строками
+
+// Главная функция программы
+int main() {
+    std::string name;  // имя пользователя
+    std::cout << "Enter your name: ";  // запрос имени
+    std::cin >> name;  // чтение имени
+    std::cout << "Hello world from " << name << "!" << std::endl;  // приветствие
+    return 0;  // успешное завершение
+}
+>>>>>>> 610eb63 (Update comments in hello_world.cpp)
+```
+
+```bash
+#include <iostream>  // для ввода и вывода
+#include <string>    // для работы со строками
+
+// Главная функция программы
+int main()
+{
+  std::string name;  // имя пользователя
+  std::cout << "Enter your name: ";  // запрос имени
+  std::cin >> name;  // чтение имени
+  std::cout << "Hello world from " << name << "!" << std::endl;  // приветствие
+  return 0;  // успешное завершение
+}
+```
+Теперь сохраняем и добавляем полученный файл:
+
+```bash
+git add hello_world.cpp
+```
+Теперь базируем его:
+
+```bash
+git rebase --continue
+```
+Как видим, других конфликтов не возникло:
+
+```bash
+[detached HEAD 9ec4377] Apply Mozilla code style
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+ rewrite hello_world.cpp (98%)
+Successfully rebased and updated refs/heads/patch2.
+```
+
+### Пункт 7 Сделайте force push в ветку patch2
+
+```bash
+git push origin patch2 --force
+```
+<details>
+  <summary>Вывод</summary>
+  
+      Username for 'https://github.com': Nicckki
+    Password for 'https://Nicckki@github.com': 
+    Enumerating objects: 5, done.
+    Counting objects: 100% (5/5), done.
+    Compressing objects: 100% (3/3), done.
+    Writing objects: 100% (3/3), 568 bytes | 568.00 KiB/s, done.
+    Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+    To https://github.com/Nicckki/lab02.git
+     + 066ec7e...9ec4377 patch2 -> patch2 (forced update)
+  </details>
+
+### Пункт 8 Убедитель, что в pull-request пропали конфликтны.
+Откроем Pull Request на GitHub. Красное сообщение "Conflicts" исчезло и появилась зеленая кнопка "Merge pull request".
+
+### Пункт 9 Вмержите pull-request patch2 -> master.
+Сделали это на GitHub.(Также было принято решение удалить ветку patch2, как во 2 части, для большей наглядности)
 
 
 
