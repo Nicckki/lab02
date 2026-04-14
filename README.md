@@ -434,6 +434,16 @@ git log
 </details>
 
 ### Пункт 5 Создайте pull-request patch1 -> master.
+Создаем pull-request patch1 -> main на GitHub через терминал.(так быстро и просто)
+
+```bash
+hub pull-request -b main -h patch1 -m "Fix: remove using namespace std"
+```
+В итоге высветилась ссылка на созданный pull request "https://github.com/Nicckki/lab02/pull/1"
+
+### Пункт 6 В локальной копии в ветке patch1 добавьте в исходный код комментарии.
+
+
 
 
 
