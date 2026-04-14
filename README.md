@@ -270,7 +270,50 @@ int main() {
 }
 EOF
 ```
+### Пункт 4 Добавьте этот файл в локальную копию репозитория.
 
+```bash
+git add hello_world.cpp
+```
+### Пункт 5 Закоммитьте изменения с осмысленным сообщением.
+
+```bash
+git commit -m "Add hello_world.cpp with bad style"
+```
+<details>
+  <summary>Вывод</summary>
+
+      [main 8f224a5] Add hello_world.cpp with bad style
+     1 file changed, 7 insertions(+)
+     create mode 100644 hello_world.cpp
+</details>
+
+### Пункт 6 Изменитьте исходный код так, чтобы программа через стандартный поток ввода запрашивалось имя пользователя. А в стандартный поток вывода печаталось сообщение Hello world from @name, где @name имя пользователя.
+Новый код:
+
+```bash
+cat > hello_world.cpp <<EOF
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Hello world from " << name << "!" << endl;
+    return 0;
+}
+EOF
+```
+### Пункт 7 Закоммитьте новую версию программы. Почему не надо добавлять файл повторно git add?
+
+```bash
+git commit -am "Add name input to hello_world"
+```
+Что делает флаг -a: Автоматически добавляет измененные файлы (которые уже отслеживаются Git). Новые файлы он не добавит. Почему не нужен git add: Файл hello_world.cpp уже отслеживается Git (мы его добавили в шаге 2). Флаг -a заменяет git add для уже существующих файлов.
+
+### Пункт 8
 
 
 
