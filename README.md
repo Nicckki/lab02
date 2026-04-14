@@ -442,7 +442,106 @@ hub pull-request -b main -h patch1 -m "Fix: remove using namespace std"
 В итоге высветилась ссылка на созданный pull request "https://github.com/Nicckki/lab02/pull/1"
 
 ### Пункт 6 В локальной копии в ветке patch1 добавьте в исходный код комментарии.
+Добавляем комментарии:
+```bash
+#include <iostream>  // для ввода-вывода
+#include <string>    // для работы со строками
 
+int main() {
+    std::string name;  // переменная для хранения имени пользователя
+    std::cout << "Enter your name: ";  // запрос имени
+    std::cin >> name;  // чтение имени из консоли
+    std::cout << "Hello world from " << name << "!" << std::endl;  // приветствие
+    return 0;  // успешное завершение программы
+}
+```
+### Пункт 7 commit, push.
+Коммитим и пушим изменения.
+```bash
+git commit -am "Add comments to hello_world.cpp"
+```
+<details>
+  <summary>Вывод</summary>
+
+    [patch1 56cdb34] Add comments to hello_world.cpp
+     1 file changed, 12 insertions(+), 12 deletions(-)
+</details>
+
+```bash
+git push origin patch1
+```
+<details>
+  <summary>Вывод</summary>
+
+    Username for 'https://github.com': Nicckki
+    Password for 'https://Nicckki@github.com': 
+    Enumerating objects: 5, done.
+    Counting objects: 100% (5/5), done.
+    Compressing objects: 100% (3/3), done.
+    Writing objects: 100% (3/3), 569 bytes | 569.00 KiB/s, done.
+    Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+    To https://github.com/Nicckki/lab02.git
+       eaa79f1..56cdb34  patch1 -> patch1
+  </details>
+
+ ### Пункт 8 Проверьте, что новые изменения есть в созданном на шаге 5 pull-request
+Этот момент я выполнил в гитхабе, открыл ссылку и прокрутил вниз, где вкладка **commits** показала оба коммита.
+
+### Пункт 9 В удалённый репозитории выполните слияние PR patch1 -> master и удалите ветку patch1 в удаленном репозитории.
+Также сделали на гитхабе.
+
+### Пункт 10 Локально выполните pull.
+
+```bash
+git checkout main
+git pull origin main
+```
+<details>
+  <summary>Вывод</summary>
+
+    remote: Enumerating objects: 15, done.
+    remote: Counting objects: 100% (14/14), done.
+    remote: Compressing objects: 100% (11/11), done.
+    remote: Total 11 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+    Unpacking objects: 100% (11/11), 4.53 KiB | 244.00 KiB/s, done.
+    From https://github.com/Nicckki/lab02
+     * branch            main       -> FETCH_HEAD
+       e894b99..ab3f56f  main       -> origin/main
+    Updating e894b99..ab3f56f
+    Fast-forward
+     README.md       | 81 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     hello_world.cpp | 16 +++++++---------
+     2 files changed, 88 insertions(+), 9 deletions(-)
+  </details>
+
+  ### Пункт 11 С помощью команды git log просмотрите историю в локальной версии ветки main.
+```bash
+git log --oneline
+```
+<details>
+  <summary>Вывод</summary>
+  
+    ab3f56f (HEAD -> main, origin/main) Merge pull request #1 from Nicckki/patch1
+    56cdb34 (origin/patch1, patch1) Add comments to hello_world.cpp
+    eaa79f1 Remove using namespace std
+    da737f1 Add name input to hello_world
+    8f224a5 Add hello_world.cpp with bad style
+    70a9e11 Initial commit
+  </details>
+
+  ### Пункт 12 Удалите локальную ветку patch1.
+
+```bash
+git branch -d patch1
+```
+<details>
+  <summary>Вывод</summary>
+
+    Deleted branch patch1 (was 56cdb34).
+  </details>
+
+  ## Часть 3
 
 
 
