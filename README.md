@@ -364,6 +364,76 @@ git log
 </details>
 
 ## Часть 2
+### Пункт 1 В локальной копии репозитория создайте локальную ветку patch1.
+
+```bash
+git checkout -b patch1
+```
+
+### Пункт 2 Внесите изменения в ветке patch1 по исправлению кода и избавления от using namespace std;.
+Меняем только код hello_world.cpp
+
+```bash
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name;
+    std::cout << "Enter your name: ";
+    std::cin >> name;
+    std::cout << "Hello world from " << name << "!" << std::endl;
+    return 0;
+}
+```
+### Пункт 3 commit, push локальную ветку в удалённый репозиторий.
+
+```bash
+git commit -am "Remove using namespace std"
+```
+<details>
+  <summary>Вывод</summary>
+
+      [patch1 eaa79f1] Remove using namespace std
+     1 file changed, 4 insertions(+), 6 deletions(-)
+</details>
+
+```bash
+git push origin patch1
+```
+<details>
+  <summary>Вывод</summary>
+
+        Username for 'https://github.com': Nicckki
+      Password for 'https://Nicckki@github.com': 
+      Enumerating objects: 92, done.
+      Counting objects: 100% (92/92), done.
+      Compressing objects: 100% (84/84), done.
+      Writing objects: 100% (92/92), 28.09 KiB | 1.08 MiB/s, done.
+      Total 92 (delta 44), reused 0 (delta 0), pack-reused 0
+      remote: Resolving deltas: 100% (44/44), done.
+      remote: 
+      remote: Create a pull request for 'patch1' on GitHub by visiting:
+      remote:      https://github.com/Nicckki/lab02/pull/new/patch1
+      remote: 
+      To https://github.com/Nicckki/lab02.git
+       * [new branch]      patch1 -> patch1
+</details>
+
+### Пункт 4 Проверьте, что ветка patch1 доступна в удалёный репозитории.
+```bash
+git log
+```
+<details>
+  <summary>В выводе видно как фигурирует origin/patch1</summary>
+
+      commit eaa79f1e89d05535ec5fb646b34e08d198017246 (HEAD -> patch1, origin/patch1)
+    Author: Nicckki <nkuzin279@gmail.com>
+    Date:   Tue Apr 14 19:37:09 2026 +0300
+
+    Remove using namespace std
+</details>
+
+### Пункт 5 Создайте pull-request patch1 -> master.
 
 
 
