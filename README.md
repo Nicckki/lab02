@@ -5,14 +5,7 @@
 
 ## Туториал работы
 Настроим переменные, необходимые для работы, переместимся в рабочую директорию и выполним активацию предварительно созданных скриптов.
-
-```sh
-=======
-Данная лабораторная работа посвещена изучению систем контроля версий на примере **Git**.
-## Туториал работы
-Настроим переменные, необходимые для работы, переместимся в рабочую директорию и выполним активацию предварительно созданных скриптов.
 ```bash
->>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ export GITHUB_USERNAME=Nicckki
 $ export GITHUB_EMAIL=<почтовый_ящик
 $ export GITHUB_TOKEN=<мой_токен>
@@ -20,14 +13,9 @@ $ alias edit=nano
 $ cd ${GITHUB_USERNAME}/workspace
 $ source scripts/activate
 ```
-<<<<<<< HEAD
 Здесь мы создаем конфигурационный файл для утилиты **hub**, в котором хранятся логин и токен для доступа к GitHub, а также глобально настраиваем Git на использование протокола "https".
 
-```sh
-=======
-Здесь мы создаем конфигурационный файл для утилиты hub, в котором хранятся логин и токен для доступа к GitHub, а также глобально настраиваем Git на использование протокола "https".
 ```bash
->>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ mkdir ~/.config
 $ cat > ~/.config/hub <<EOF
 github.com:
@@ -37,41 +25,6 @@ github.com:
 EOF
 $ git config --global hub.protocol https
 ```
-<<<<<<< HEAD
-
-```sh
-$ mkdir projects/lab02 && cd projects/lab02
-$ git init
-$ git config --global user.name ${GITHUB_USERNAME}
-$ git config --global user.email ${GITHUB_EMAIL}
-# check your git global settings
-$ git config -e --global
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab02.git
-$ git pull origin master
-$ touch README.md
-$ git status
-$ git add README.md
-$ git commit -m"added README.md"
-$ git push origin master
-```
-
-Добавить на сервисе **GitHub** в репозитории **lab02** файл **.gitignore**
-со следующем содержимом:
-
-```sh
-*build*/
-*install*/
-*.swp
-.idea/
-```
-
-```sh
-$ git pull origin master
-$ git log
-```
-
-```sh
-=======
 Создаем папку для 2 лабораторной работы и перемещаемся в неё.
 ```bash
 $ mkdir projects/lab02 && cd projects/lab02
