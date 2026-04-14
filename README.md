@@ -1,6 +1,4 @@
 # Лабораторная работа № 2
-<<<<<<< HEAD
-
 Данная лабораторная работа посвещена изучению систем контроля версий на примере **Git**.
 
 ## Туториал работы
@@ -343,9 +341,47 @@ git commit -am "Add name input to hello_world"
 ```
 Что делает флаг -a: Автоматически добавляет измененные файлы (которые уже отслеживаются Git). Новые файлы он не добавит. Почему не нужен git add: Файл hello_world.cpp уже отслеживается Git (мы его добавили в шаге 2). Флаг -a заменяет git add для уже существующих файлов.
 
-### Пункт 8
-фвфв
+### Пункт 8 Запуште изменения в удалёный репозиторий.
 
+```bash
+git push origin main
+```
+<details>
+  <summary>Вывод команды.</summary>
+
+    Username for 'https://github.com': Nicckki
+    Password for 'https://Nicckki@github.com': 
+    Enumerating objects: 17, done.
+    Counting objects: 100% (17/17), done.
+    Compressing objects: 100% (13/13), done.
+    Writing objects: 100% (13/13), 3.37 KiB | 1.68 MiB/s, done.
+    Total 13 (delta 7), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (7/7), completed with 2 local objects.
+    To https://github.com/Nicckki/lab02.git
+       13d0abd..dbdd3c3  main -> main
+</details>
+
+### Пункт 9 Проверьте, что история коммитов доступна в удалёный репозитории.
+
+```bash
+git log
+```
+<details>
+      <summary>Вывод команды.</summary>
+  
+    commit da737f14b7e0b741e2681d58dfb6b79cac7aef71
+    Author: Nicckki <nkuzin279@gmail.com>
+    Date:   Tue Apr 14 18:44:38 2026 +0300
+    
+        Add name input to hello_world
+    
+    commit 8f224a5b4b9b7371f1e62e6c484e40dad4d9019f
+    Author: Nicckki <nkuzin279@gmail.com>
+    Date:   Tue Apr 14 18:29:55 2026 +0300
+    
+        Add hello_world.cpp with bad style
+
+</details>
 
 
 
