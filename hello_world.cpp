@@ -1,12 +1,13 @@
-#include <iostream> // for input and output
-#include <string> //  for strings
 
+#include <iostream> //для ввода-вывода
+#include <string>   //для работ со строками
 
-
-int main() {
-    std::string name; // user name
-    std::cout << "Enter your name: "; // prompt
-    std::cin >> name; // read name
-    std::cout << "Hello world from " << name << "!" << std::endl; // greeting
-    return 0; // success
+int
+main()
+{
+  std::string name; //переменная для хранения имени пользователя
+  std::cout << "Enter your name: "; //запрос имени
+  std::cin >> name; //ввод имени пользователя
+  std::cout << "Hello world from " << name << "!" << std::endl; //приветсвие
+  return 0; //успешное завершение программы
 }
