@@ -233,6 +233,25 @@ int main(int argc, char** argv)
 }
 EOF
 ```
+Фиксируем и отправляем изменения.
+
+```bash
+$ git add .
+$ git commit -m"added sources"
+$ git push origin master
+```
+Смотрим что выведет команда.
+<details>
+  <summary>Все успешно было сохранени на GitHub.</summary>
+  
+    [main a34c9a4] added sources
+     5 files changed, 33 insertions(+)
+     create mode 100644 examples/example1.cpp
+     create mode 100644 examples/example2.cpp
+     create mode 100644 include/print.hpp
+     create mode 100644 sources/print.cpp
+
+</details>
 
 
 
