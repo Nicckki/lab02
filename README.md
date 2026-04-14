@@ -185,7 +185,6 @@ $ git log
 Теперь создадим несколько .cpp файлов(sources, include, examples)
 
 ```bash
->>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ mkdir sources
 $ mkdir include
 $ mkdir examples
@@ -203,10 +202,7 @@ void print(const std::string& text, std::ofstream& out)
 }
 EOF
 ```
-<<<<<<< HEAD
 
-```sh
-=======
 ```bash
 >>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ cat > include/print.hpp <<EOF
@@ -218,10 +214,7 @@ void print(const std::string& text, std::ofstream& out);
 void print(const std::string& text, std::ostream& out = std::cout);
 EOF
 ```
-<<<<<<< HEAD
 
-```sh
-=======
 ```bash
 >>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ cat > examples/example1.cpp <<EOF
@@ -233,10 +226,7 @@ int main(int argc, char** argv)
 }
 EOF
 ```
-<<<<<<< HEAD
 
-```sh
-=======
 ```bash
 >>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ cat > examples/example2.cpp <<EOF
@@ -251,19 +241,9 @@ int main(int argc, char** argv)
 }
 EOF
 ```
-<<<<<<< HEAD
-
-```sh
-$ edit README.md
-```
-
-```sh
-$ git status
-=======
 Фиксируем и отправляем изменения.
 
 ```bash
->>>>>>> 13d0abda3572ab036e1a6eff085baad7539519d0
 $ git add .
 $ git commit -m"added sources"
 $ git push origin master
