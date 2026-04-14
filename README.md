@@ -44,7 +44,9 @@ $ git init
     hint: 	git branch -m <name>
     Initialised empty Git repository in /home/vboxuser/Nicckki/workspace/projects/lab02/.git/
 </details>
+
 Поскольку на GitHub основная ветка по умолчанию называется main, во избежание конфликта имен переименуем локальную ветку master в main.
+
 ```bash
 $ git branch -m main
 ```
