@@ -50,4 +50,38 @@ $ git init
 ```bash
 $ git branch -m main
 ```
+Устанавливаем имя и почту для гита и проверяем, чтобы все получилось правильно
+```bash
+$ git config --global user.name ${GITHUB_USERNAME}
+$ git config --global user.email ${GITHUB_EMAIL}
+$ git config -e --global
+```
+<details>
+  <summary>Вывод говорит нам, что все установилось правильно</summary>
+
+    [hub]
+        protocol = https
+    [user]
+        name = Nicckki
+        email = <моя почта>@gmail.com
+</details>
+Все настроено корректно, теперь привяжем локальную папку к удаленному репозиторию и загрузим все на наш компьютр, что есть репозитории.
+
+```bash  
+$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab02.git
+$ git pull origin master
+```
+
+<details>
+  <summary>Вывод команды, что все успешно</summary>
+  
+    remote: Enumerating objects: 3, done.
+    remote: Counting objects: 100% (3/3), done.
+    remote: Compressing objects: 100% (2/2), done.
+    remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+    Unpacking objects: 100% (3/3), 1.45 KiB | 740.00 KiB/s, done.
+    From https://github.com/Nicckki/lab02
+     * branch            main       -> FETCH_HEAD
+     * [new branch]      main       -> origin/main
+</details>
 
